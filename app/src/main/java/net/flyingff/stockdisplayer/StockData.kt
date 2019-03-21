@@ -34,7 +34,7 @@ data class StockData (
             val c = Calendar.getInstance()
             c.set(
                 matcher.group(1).toInt(),
-                matcher.group(2).toInt(),
+                matcher.group(2).toInt() - 1,
                 matcher.group(3).toInt(),
                 matcher.group(4).toInt(),
                 matcher.group(5).toInt(),

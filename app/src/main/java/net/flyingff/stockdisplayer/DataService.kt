@@ -137,7 +137,7 @@ class DataService : IntentService("DataService") {
     private val textSmallColorDown = 0xaf0e881f.toInt()
 
     private val cmpFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
-    private val format = SimpleDateFormat("MM-dd", Locale.getDefault())
+    private val format = SimpleDateFormat("E MM-dd", Locale.getDefault())
     private val timeFormat = SimpleDateFormat("MM-dd hh:mm", Locale.getDefault())
     private fun paint(dataList : List<StockData>) : Bitmap {
         val w = 640
@@ -206,7 +206,7 @@ class DataService : IntentService("DataService") {
 
             val originColor = paintTextSmall.color
             paintTextSmall.color = if (abs > 0) textSmallColorUp else textSmallColorDown
-            canvas.drawText("$day $percent%", (minX + maxX) / 2, h - 4f, paintTextSmall)
+            canvas.drawText("${format.format(minStock.date)} $percent%", (minX + maxX) / 2, h - 4f, paintTextSmall)
             canvas.drawText(String.format("%+.02f", abs), (minX + maxX) / 2, h - 20f, paintTextSmall)
             paintTextSmall.color = originColor
         }
